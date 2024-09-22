@@ -36,18 +36,30 @@ function Get-Signature {
 
 Clear-Host
 
-Write-Host "";
-Write-Host "";
-Write-Host -ForegroundColor Red "    █████╗  ██████╗ ██╗██╗  ██╗";
-Write-Host -ForegroundColor Red "   ██╔══██╗██╔════╝ ██║██║ ██╔╝";
-Write-Host -ForegroundColor Red "   ███████║██║  ███╗██║█████╔╝ ";
-Write-Host -ForegroundColor Red "   ██╔══██║██║   ██║██║██╔═██╗ ";
-Write-Host -ForegroundColor Red "   ██║  ██║╚██████╔╝██║██║  ██╗";
-Write-Host -ForegroundColor Red "   ╚═╝  ╚═╝ ╚═════╝ ╚═╝╚═╝  ╚═╝";
-Write-Host "";
-Write-Host -ForegroundColor Red "   Made By qpal (AKA Jigz) " -NoNewLine
-Write-Host -ForegroundColor Red "discord.gg/qpal";
-Write-Host "";
+$colors = @('Red', 'Yellow', 'Green', 'Cyan', 'Blue', 'Magenta')
+
+$asciiArt = @(
+    " __    __  __      __  _______    ______    ______    ______  "
+    "|  \  |  \|  \    /  \|       \  /      \  /      \  /      \ "
+    "| $$  | $$ \$$\  /  $$| $$$$$$$\|  $$$$$$\|  $$$$$$\|  $$$$$$\\"
+    " \$$\/  $$  \$$\/  $$ | $$__/ $$| $$__| $$| $$___\$$| $$___\$$"
+    "  >$$  $$    \$$  $$  | $$    $$| $$    $$ \$$    \  \$$    \ "
+    " /  $$$$\     \$$$$   | $$$$$$$ | $$$$$$$$ _\$$$$$$\ _\$$$$$$\\"
+    "|  $$ \$$\    | $$    | $$      | $$  | $$|  \__| $$|  \__| $$"
+    "| $$  | $$    | $$    | $$      | $$  | $$ \$$    $$ \$$    $$"
+    " \$$   \$$     \$$     \$$       \$$   \$$  \$$$$$$   \$$$$$$ "
+)
+
+foreach ($line in $asciiArt) {
+    $color = $colors[$asciiArt.IndexOf($line) % $colors.Count]
+    Write-Host -ForegroundColor $color $line
+}
+
+Write-Host ""
+Write-Host -ForegroundColor Red " xy " -NoNewLine
+Write-Host -ForegroundColor Red "discord.gg/xypass"
+Write-Host ""
+
 
 function Test-Admin {;$currentUser = New-Object Security.Principal.WindowsPrincipal $([Security.Principal.WindowsIdentity]::GetCurrent());$currentUser.IsInRole([Security.Principal.WindowsBuiltinRole]::Administrator);}
 if (!(Test-Admin)) {
